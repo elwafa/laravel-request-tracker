@@ -2,10 +2,10 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/elwafa/laravek-request-tracker.svg?style=flat-square)](https://packagist.org/packages/elwafa/laravel-request-tracker)
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/:elwafa/:laravel-request-tracker.svg?style=flat-square)](https://packagist.org/packages/elwafa/laravel-request-tracker)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/elwafa/laravel-request-tracker.svg?style=flat-square)](https://packagist.org/packages/elwafa/laravel-request-tracker)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/elwafa/laravel-request-tracker/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/elwafa/laravel-request-tracker/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/elwafa/laravel-request-tracker/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/elwafa/laravel-request-tracker/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/elwafa/laravel-request-tracker.svg?style=flat-square)](https://packagist.org/packages/elwafa/laravel-request-tracker)
 <!--delete-->
 ---
 This repo can be used to scaffold a Laravel package. Follow these steps to get started:
@@ -31,20 +31,20 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 You can install the package via composer:
 
 ```bash
-composer require :vendor_slug/:package_slug
+composer require elwafa/laravel-request-tracker
 ```
 
 You can publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --tag=":package_slug-migrations"
+php artisan vendor:publish --tag="laravel-request-tracker-migrations"
 php artisan migrate
 ```
 
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag=":package_slug-config"
+php artisan vendor:publish --tag="laravel-request-tracker-config"
 ```
 
 This is the contents of the published config file:
@@ -57,7 +57,7 @@ return [
 Optionally, you can publish the views using
 
 ```bash
-php artisan vendor:publish --tag=":package_slug-views"
+php artisan vendor:publish --tag="laravel-request-tracker-views"
 ```
 
 ## Usage
