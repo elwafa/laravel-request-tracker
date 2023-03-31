@@ -1,17 +1,18 @@
 {
     "name": "elwafa/laravel-request-tracker",
-    "description": ":package_description",
+    "description": "A Laravel package to track requests",
     "keywords": [
-        ":vendor_name",
+        "elwafa",
         "laravel",
-        ":package_slug"
+        "request",
+        "tracker"
     ],
     "homepage": "https://github.com/:vendor_slug/:package_slug",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "islam elwafa",
+            "email": "eslamaboelwafa@gmail.com",
             "role": "Developer"
         }
     ],
