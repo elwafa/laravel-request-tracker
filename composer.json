@@ -1,5 +1,5 @@
 {
-    "name": ":vendor_slug/:package_slug",
+    "name": "elwafa/laravel-logger",
     "description": ":package_description",
     "keywords": [
         ":vendor_name",

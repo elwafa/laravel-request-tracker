@@ -1,4 +1,7 @@
-# :package_description
+# Laravel Request and Respone Logger
+
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/abhishek-pokhriyal/laravel-request-response-logger.svg?style=flat-square)](https://packagist.org/packages/abhishek-pokhriyal/laravel-request-response-logger)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/abhishek-pokhriyal/laravel-request-response-logger/run-tests?label=tests&style=flat-square)](
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3Arun-tests+branch%3Amain)
