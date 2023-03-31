@@ -7,7 +7,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/elwafa/laravel-request-tracker/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/elwafa/laravel-request-tracker/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/elwafa/laravel-request-tracker.svg?style=flat-square)](https://packagist.org/packages/elwafa/laravel-request-tracker)
 
-Track Laravel Requests with its response and user third party to save it
+Track Laravel Requests with its response and use third party services to track requests.
 
 ## Installation
 
