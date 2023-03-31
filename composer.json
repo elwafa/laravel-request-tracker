@@ -1,5 +1,5 @@
 {
-    "name": "elwafa/laravel-request-logger",
+    "name": "elwafa/laravel-request-tracker",
     "description": ":package_description",
     "keywords": [
         ":vendor_name",
