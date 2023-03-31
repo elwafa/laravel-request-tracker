@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Elwafa\LaravelRequestTracker\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelRequestTrackerCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-request-tracker';
 
     public $description = 'My command';
 
