@@ -1,4 +1,4 @@
-# Laravel Request and Respone Logger
+# Laravel Request Logger
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/abhishek-pokhriyal/laravel-request-response-logger.svg?style=flat-square)](https://packagist.org/packages/abhishek-pokhriyal/laravel-request-response-logger)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/abhishek-pokhriyal/laravel-request-response-logger/run-tests?label=tests&style=flat-square)](
