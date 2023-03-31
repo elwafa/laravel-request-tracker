@@ -2,9 +2,9 @@
 
 namespace Elwafa\LaravelRequestTracker;
 
+use Elwafa\LaravelRequestTracker\Commands\LaravelRequestTrackerCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Elwafa\LaravelRequestTracker\Commands\LaravelRequestTrackerCommand;
 
 class LaravelRequestTrackerServiceProvider extends PackageServiceProvider
 {

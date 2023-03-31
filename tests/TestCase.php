@@ -2,9 +2,9 @@
 
 namespace Elwafa\LaravelRequestTracker\Tests;
 
+use Elwafa\LaravelRequestTracker\LaravelRequestTrackerServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Elwafa\LaravelRequestTracker\LaravelRequestTrackerServiceProvider;
 
 class TestCase extends Orchestra
 {
