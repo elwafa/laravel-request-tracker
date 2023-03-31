@@ -1,6 +1,6 @@
 # Laravel Request Tracker
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/elwafa/laravek-request-tracker.svg?style=flat-square)](https://packagist.org/packages/elwafa/laravel-request-tracker)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/elwafa/laravel-request-tracker.svg?style=flat-square)](https://packagist.org/packages/elwafa/laravel-request-tracker)
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/elwafa/laravel-request-tracker.svg?style=flat-square)](https://packagist.org/packages/elwafa/laravel-request-tracker)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/elwafa/laravel-request-tracker/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/elwafa/laravel-request-tracker/actions?query=workflow%3Arun-tests+branch%3Amain)
