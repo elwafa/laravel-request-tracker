@@ -8,11 +8,12 @@ use Illuminate\Support\Facades\Log;
 class RequestHandled
 {
     private \Illuminate\Foundation\Http\Events\RequestHandled $event;
+
     private string $trackerId;
 
     public function handle(\Illuminate\Foundation\Http\Events\RequestHandled $event)
     {
-        if (!config('laravel-request-tracker.enable')) {
+        if (! config('laravel-request-tracker.enable')) {
             return;
         }
         $this->event = $event;
@@ -21,12 +22,11 @@ class RequestHandled
         $this->sendLog($responseData);
     }
 
-
     /*
      * Send log to logging
      * @param array $tracker
      * */
-    private function sendLog(array $tracker) : void
+    private function sendLog(array $tracker): void
     {
         try {
             $client = new Client();
@@ -35,11 +35,11 @@ class RequestHandled
             ], [
                 'headers' => [
                     'Content-Type' => 'application/json',
-                    'API-KEY' => config('laravel-request-tracker.api_key')
+                    'API-KEY' => config('laravel-request-tracker.api_key'),
                 ],
             ])->send();
         } catch (\Exception $exception) {
-            Log::error("can not send log to logging", [
+            Log::error('can not send log to logging', [
                 'message' => $exception->getMessage(),
                 'file' => $exception->getFile(),
                 'line' => $exception->getLine(),
@@ -48,13 +48,13 @@ class RequestHandled
         }
     }
 
-    private function prepareRequestData() : array
+    private function prepareRequestData(): array
     {
         return [
             'tracker_request_response_id' => $this->trackerId,
             'tracker_main_project_name' => config('laravel-request-tracker.main_project_name'),
             'tracker_project_name' => config('laravel-request-tracker.project_name'),
-            'tracker_time' => now()->timezone('UTC')->format("Y-m-d H:i:s.u T"),
+            'tracker_time' => now()->timezone('UTC')->format('Y-m-d H:i:s.u T'),
             'tracker_type' => 'response',
             'tracker_data' => [
                 'response' => $this->event->response->getContent(),

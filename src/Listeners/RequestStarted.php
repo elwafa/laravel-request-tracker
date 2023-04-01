@@ -9,8 +9,6 @@ use Illuminate\Support\Str;
 
 class RequestStarted
 {
-
-
     /*
      * @var Routing $event
      * */
@@ -24,7 +22,7 @@ class RequestStarted
 
     public function handle(Routing $event)
     {
-        if (!config('laravel-request-tracker.enable')) {
+        if (! config('laravel-request-tracker.enable')) {
             return;
         }
 
@@ -32,18 +30,16 @@ class RequestStarted
 
         $this->trackerId = Str::uuid()->toString();
 
-
         $this->sendLog($this->prepareRequestData());
 
         $this->defineIdentificationForResponse();
     }
 
-
     /*
      * Send log to logging
      * @param array $tracker
      * */
-    private function sendLog(array $tracker) : void
+    private function sendLog(array $tracker): void
     {
         try {
             $client = new Client();
@@ -52,11 +48,11 @@ class RequestStarted
             ], [
                 'headers' => [
                     'Content-Type' => 'application/json',
-                    'API-KEY' => config('laravel-request-tracker.api_key')
+                    'API-KEY' => config('laravel-request-tracker.api_key'),
                 ],
             ])->send();
         } catch (\Exception $exception) {
-            Log::error("can not send log to logging", [
+            Log::error('can not send log to logging', [
                 'message' => $exception->getMessage(),
                 'trace' => $exception->getTraceAsString(),
             ]);
@@ -67,13 +63,13 @@ class RequestStarted
      *  prepare data to send to logging
      *  @return array
      * */
-    private function prepareRequestData() : array
+    private function prepareRequestData(): array
     {
         return [
             'tracker_request_response_id' => $this->trackerId,
             'tracker_main_project_name' => config('laravel-request-tracker.main_project_name'),
             'tracker_project_name' => config('laravel-request-tracker.project_name'),
-            'tracker_time' => now()->timezone('UTC')->format("Y-m-d H:i:s.u T"),
+            'tracker_time' => now()->timezone('UTC')->format('Y-m-d H:i:s.u T'),
             'tracker_type' => 'request',
             'tracker_data' => [
                 'request' => $this->event->request->all(),
@@ -90,11 +86,10 @@ class RequestStarted
         ];
     }
 
-
     /*
      *  define identification for response
      * */
-    private function defineIdentificationForResponse() : void
+    private function defineIdentificationForResponse(): void
     {
         $this->event->request->merge([config('laravel-request-tracker.identification_response_name') => $this->trackerId]);
     }
