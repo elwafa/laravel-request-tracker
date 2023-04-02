@@ -32,7 +32,7 @@ class RequestStarted
 
         $this->sendLog($this->prepareRequestData($this->event->request));
 
-        $this->defineIdentificationForResponse();
+        $this->defineIdentificationForResponse($this->event->request);
     }
 
     /*
@@ -51,7 +51,6 @@ class RequestStarted
                 ],
             ]);
         } catch (\Exception $exception) {
-            dd($exception->getMessage(), $exception->getTraceAsString());
             Log::error('can not send log to logging', [
                 'message' => $exception->getMessage(),
                 'trace' => $exception->getTraceAsString(),
@@ -94,7 +93,7 @@ class RequestStarted
         $request->merge([config('laravel-request-tracker.identification_response_name') => $this->trackerId]);
     }
 
-    public function handleNotStartedEvent(Request $request, string $trackerId)
+    public function handleNotStartedEvent(Request $request, string $trackerId): void
     {
         $this->trackerId = $trackerId;
         $this->defineIdentificationForResponse($request);
