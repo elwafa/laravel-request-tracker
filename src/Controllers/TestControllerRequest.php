@@ -6,6 +6,10 @@ class TestControllerRequest
 {
     public function index()
     {
-        return 'test';
+        return response()->json([
+            'status' => 200,
+            'title' => 'success',
+            'detail' => 'success',
+        ], 200);
     }
 }
