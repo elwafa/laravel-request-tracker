@@ -42,15 +42,14 @@ class RequestStarted
     private function sendLog(array $tracker): void
     {
         try {
-            $client = new Client();
-            $client->post(config('laravel-request-tracker.url'), [
+            $client = new \GuzzleHttp\Client();
+            $client->request('post',config('laravel-request-tracker.url'), [
                 'json' => $tracker,
-            ], [
                 'headers' => [
                     'Content-Type' => 'application/json',
                     'API-KEY' => config('laravel-request-tracker.api_key'),
                 ],
-            ])->send();
+            ]);
         } catch (\Exception $exception) {
             Log::error('can not send log to logging', [
                 'message' => $exception->getMessage(),
@@ -69,7 +68,7 @@ class RequestStarted
             'tracker_request_response_id' => $this->trackerId,
             'tracker_main_project_name' => config('laravel-request-tracker.main_project_name'),
             'tracker_project_name' => config('laravel-request-tracker.project_name'),
-            'tracker_time' => now()->timezone('UTC')->format('Y-m-d H:i:s.u T'),
+            'tracker_time' => now()->timezone('UTC'),
             'tracker_type' => 'request',
             'tracker_data' => [
                 'request' => $this->event->request->all(),
