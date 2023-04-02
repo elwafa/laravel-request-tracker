@@ -2,7 +2,6 @@
 
 namespace Elwafa\LaravelRequestTracker\Listeners;
 
-use Guzzle\Http\Client;
 use Illuminate\Support\Facades\Log;
 
 class RequestHandled
@@ -30,7 +29,7 @@ class RequestHandled
     {
         try {
             $client = new \GuzzleHttp\Client();
-            $client->request('PUT',config('laravel-request-tracker.url'), [
+            $client->request('PUT', config('laravel-request-tracker.url'), [
                 'json' => $tracker,
                 'headers' => [
                     'Content-Type' => 'application/json',

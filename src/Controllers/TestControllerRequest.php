@@ -9,7 +9,7 @@ class TestControllerRequest
         return response()->json([
             'status' => 200,
             'title' => 'success',
-            'detail' => 'success'
+            'detail' => 'success',
         ], 200);
     }
 }
