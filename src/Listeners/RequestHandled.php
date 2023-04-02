@@ -3,20 +3,25 @@
 namespace Elwafa\LaravelRequestTracker\Listeners;
 
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class RequestHandled
 {
     private \Illuminate\Foundation\Http\Events\RequestHandled $event;
 
-    private string $trackerId;
+    private ?string $trackerId;
 
     public function handle(\Illuminate\Foundation\Http\Events\RequestHandled $event)
     {
-//        if (! config('laravel-request-tracker.enable')) {
-//            return;
-//        }
+        if (! config('laravel-request-tracker.enable')) {
+            return;
+        }
         $this->event = $event;
         $this->trackerId = $event->request->get(config('laravel-request-tracker.identification_response_name'));
+        if (! $this->trackerId) {
+            $this->trackerId = Str::uuid();
+            (new RequestStarted())->handleNotStartedEvent($event->request,$this->trackerId);
+        }
         $responseData = $this->prepareRequestData();
         $this->sendLog($responseData);
     }
