@@ -93,7 +93,7 @@ class RequestStarted
         $this->event->request->merge([config('laravel-request-tracker.identification_response_name') => $this->trackerId]);
     }
 
-    public function handleNotStartedEvent(Request $request,string $trackerId)
+    public function handleNotStartedEvent(Request $request, string $trackerId)
     {
         $this->trackerId = $trackerId;
         $this->sendLog($this->prepareRequestData($request));
