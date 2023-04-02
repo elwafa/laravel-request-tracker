@@ -13,7 +13,7 @@ class RequestHandled
 
     public function handle(\Illuminate\Foundation\Http\Events\RequestHandled $event)
     {
-        if (! config('laravel-request-tracker.enable')) {
+        if (! config('laravel-request-tracker.enabled')) {
             return;
         }
         $this->event = $event;

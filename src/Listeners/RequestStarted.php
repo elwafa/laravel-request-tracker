@@ -22,7 +22,7 @@ class RequestStarted
 
     public function handle(Routing $event)
     {
-        if (! config('laravel-request-tracker.enable')) {
+        if (! config('laravel-request-tracker.enabled')) {
             return;
         }
 
@@ -30,9 +30,9 @@ class RequestStarted
 
         $this->trackerId = Str::uuid()->toString();
 
-        $this->sendLog($this->prepareRequestData());
+        $this->sendLog($this->prepareRequestData($this->event->request));
 
-        $this->defineIdentificationForResponse();
+        $this->defineIdentificationForResponse($this->event->request);
     }
 
     /*
@@ -88,14 +88,15 @@ class RequestStarted
     /*
      *  define identification for response
      * */
-    private function defineIdentificationForResponse(): void
+    private function defineIdentificationForResponse(Request $request): void
     {
-        $this->event->request->merge([config('laravel-request-tracker.identification_response_name') => $this->trackerId]);
+        $request->merge([config('laravel-request-tracker.identification_response_name') => $this->trackerId]);
     }
 
-    public function handleNotStartedEvent(Request $request, string $trackerId)
+    public function handleNotStartedEvent(Request $request, string $trackerId): void
     {
         $this->trackerId = $trackerId;
+        $this->defineIdentificationForResponse($request);
         $this->sendLog($this->prepareRequestData($request));
     }
 }
