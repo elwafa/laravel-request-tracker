@@ -21,9 +21,9 @@ class RequestStarted
 
     public function handle(Routing $event)
     {
-        if (! config('laravel-request-tracker.enable')) {
-            return;
-        }
+//        if (! config('laravel-request-tracker.enable')) {
+//            return;
+//        }
 
         $this->event = $event;
 

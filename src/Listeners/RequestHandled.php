@@ -12,9 +12,9 @@ class RequestHandled
 
     public function handle(\Illuminate\Foundation\Http\Events\RequestHandled $event)
     {
-        if (! config('laravel-request-tracker.enable')) {
-            return;
-        }
+//        if (! config('laravel-request-tracker.enable')) {
+//            return;
+//        }
         $this->event = $event;
         $this->trackerId = $event->request->get(config('laravel-request-tracker.identification_response_name'));
         $responseData = $this->prepareRequestData();
