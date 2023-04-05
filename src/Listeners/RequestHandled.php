@@ -2,6 +2,8 @@
 
 namespace Elwafa\LaravelRequestTracker\Listeners;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
@@ -11,6 +13,11 @@ class RequestHandled
 
     private ?string $trackerId;
 
+    /**
+     * @param \Illuminate\Foundation\Http\Events\RequestHandled $event
+     * @return void
+     * @throws GuzzleException
+     */
     public function handle(\Illuminate\Foundation\Http\Events\RequestHandled $event)
     {
         if (! config('laravel-request-tracker.enabled')) {
@@ -26,14 +33,15 @@ class RequestHandled
         $this->sendLog($responseData);
     }
 
-    /*
+    /**
      * Send log to logging
      * @param array $tracker
-     * */
+     * @throws GuzzleException
+     */
     private function sendLog(array $tracker): void
     {
         try {
-            $client = new \GuzzleHttp\Client();
+            $client = new Client();
             $client->request('PUT', config('laravel-request-tracker.url'), [
                 'json' => $tracker,
                 'headers' => [
