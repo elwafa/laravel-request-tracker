@@ -2,6 +2,7 @@
 
 namespace Elwafa\LaravelRequestTracker\Listeners;
 
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Events\Routing;
 use Illuminate\Support\Facades\Log;
@@ -50,7 +51,7 @@ class RequestStarted
                     'API-KEY' => config('laravel-request-tracker.api_key'),
                 ],
             ]);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             Log::error('can not send log to logging', [
                 'message' => $exception->getMessage(),
                 'trace' => $exception->getTraceAsString(),
