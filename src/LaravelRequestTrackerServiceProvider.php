@@ -2,10 +2,8 @@
 
 namespace Elwafa\LaravelRequestTracker;
 
-use Elwafa\LaravelRequestTracker\Listeners\RequestHandled;
-use Elwafa\LaravelRequestTracker\Listeners\RequestStarted;
-use Illuminate\Routing\Events\Routing;
-use Illuminate\Support\Facades\Event;
+use Elwafa\LaravelRequestTracker\RegisterEvents\LaravelEvents;
+use Elwafa\LaravelRequestTracker\RegisterEvents\OctaneEvents;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -13,17 +11,25 @@ class LaravelRequestTrackerServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
-        Event::listen(Routing::class, function ($event) {
-            (new RequestStarted())->handle($event);
-        });
 
-        Event::listen(\Illuminate\Foundation\Http\Events\RequestHandled::class, function ($event) {
-            (new RequestHandled())->handle($event);
-        });
+        if ($this->runningWithOctane()) {
+            (new OctaneEvents())->register();
+        } else {
+            (new LaravelEvents())->register();
+        }
 
         $package
             ->name('laravel-request-tracker')
             ->hasConfigFile('laravel-request-tracker')
             ->hasRoutes('api');
+    }
+
+
+    /**
+     * @return bool
+     */
+    public function runningWithOctane(): bool
+    {
+        return isset($_SERVER['LARAVEL_OCTANE']);
     }
 }
