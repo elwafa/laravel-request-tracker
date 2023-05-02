@@ -1,15 +1,15 @@
 <?php
 
-namespace Elwafa\LaravelRequestTracker\Listeners;
+namespace Elwafa\LaravelRequestTracker\Listeners\Octane;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
+use Laravel\Octane\Events\RequestTerminated;
 
 class RequestHandled
 {
-    private \Illuminate\Foundation\Http\Events\RequestHandled $event;
+    private RequestTerminated $event;
 
     private ?string $trackerId;
 
@@ -18,19 +18,14 @@ class RequestHandled
      *
      * @throws GuzzleException
      */
-    public function handle(\Illuminate\Foundation\Http\Events\RequestHandled $event)
+    public function handle(RequestTerminated $event)
     {
         if (! config('laravel-request-tracker.enabled')) {
             return;
         }
         $this->event = $event;
         $this->trackerId = $event->request->get(config('laravel-request-tracker.identification_response_name'));
-        if (! $this->trackerId) {
-            $this->trackerId = Str::uuid();
-            (new RequestStarted())->handleNotStartedEvent($event->request, $this->trackerId);
-        }
-        $responseData = $this->prepareRequestData();
-        $this->sendLog($responseData);
+        $this->sendLog($this->prepareRequestData());
     }
 
     /**
