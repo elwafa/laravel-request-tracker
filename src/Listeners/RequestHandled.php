@@ -14,8 +14,8 @@ class RequestHandled
     private ?string $trackerId;
 
     /**
-     * @param \Illuminate\Foundation\Http\Events\RequestHandled $event
      * @return void
+     *
      * @throws GuzzleException
      */
     public function handle(\Illuminate\Foundation\Http\Events\RequestHandled $event)
@@ -35,7 +35,7 @@ class RequestHandled
 
     /**
      * Send log to logging
-     * @param array $tracker
+     *
      * @throws GuzzleException
      */
     private function sendLog(array $tracker): void

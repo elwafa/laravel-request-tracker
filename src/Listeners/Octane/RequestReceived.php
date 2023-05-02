@@ -2,6 +2,7 @@
 
 namespace Elwafa\LaravelRequestTracker\Listeners\Octane;
 
+use function config;
 use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
@@ -9,7 +10,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Laravel\Octane\Events\RequestReceived as OctaneRequestReceived;
-use function config;
 
 class RequestReceived
 {
@@ -17,12 +17,10 @@ class RequestReceived
 
     /**
      * Handle the event.
-     * @param OctaneRequestReceived $event
-     * @return void
      */
     public function handle(OctaneRequestReceived $event): void
     {
-        if (!config('laravel-request-tracker.enabled')) {
+        if (! config('laravel-request-tracker.enabled')) {
             return;
         }
 
@@ -31,7 +29,7 @@ class RequestReceived
         $this->sendLog($this->prepareRequestData($event->request));
 
         $event->request->merge([
-            config('laravel-request-tracker.identification_response_name') => $this->trackerId
+            config('laravel-request-tracker.identification_response_name') => $this->trackerId,
         ]);
     }
 
@@ -85,5 +83,4 @@ class RequestReceived
             ],
         ];
     }
-
 }

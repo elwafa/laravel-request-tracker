@@ -24,10 +24,6 @@ class LaravelRequestTrackerServiceProvider extends PackageServiceProvider
             ->hasRoutes('api');
     }
 
-
-    /**
-     * @return bool
-     */
     public function runningWithOctane(): bool
     {
         return isset($_SERVER['LARAVEL_OCTANE']);
