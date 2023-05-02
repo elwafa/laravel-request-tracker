@@ -2,11 +2,9 @@
 
 namespace Elwafa\LaravelRequestTracker\Listeners\Octane;
 
-use Elwafa\LaravelRequestTracker\Listeners\RequestStarted;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
 use Laravel\Octane\Events\RequestTerminated;
 
 class RequestHandled
@@ -16,8 +14,8 @@ class RequestHandled
     private ?string $trackerId;
 
     /**
-     * @param RequestTerminated $event
      * @return void
+     *
      * @throws GuzzleException
      */
     public function handle(RequestTerminated $event)
@@ -32,7 +30,7 @@ class RequestHandled
 
     /**
      * Send log to logging
-     * @param array $tracker
+     *
      * @throws GuzzleException
      */
     private function sendLog(array $tracker): void
