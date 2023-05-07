@@ -3,9 +3,9 @@
 namespace Elwafa\LaravelRequestTracker\RegisterEvents;
 
 use Elwafa\LaravelRequestTracker\Listeners\Octane\RequestHandled;
+use Elwafa\LaravelRequestTracker\Listeners\Octane\RequestReceived as OctaneRequestReceived;
 use Illuminate\Support\Facades\Event;
 use Laravel\Octane\Events\RequestReceived;
-use Elwafa\LaravelRequestTracker\Listeners\Octane\RequestReceived as OctaneRequestReceived;
 use Laravel\Octane\Events\RequestTerminated;
 
 class OctaneEvents
