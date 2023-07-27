@@ -5,7 +5,6 @@ namespace Elwafa\LaravelRequestTracker\Listeners\Octane;
 use function config;
 use Exception;
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -45,15 +44,14 @@ class RequestReceived
                 ],
             ]);
         } catch (Exception $exception) {
-            Log::error('can not send log to logging', [
-                'message' => $exception->getMessage(),
-                'trace' => $exception->getTraceAsString(),
-            ]);
-        } catch (GuzzleException $e) {
-            Log::error('Guzzle exception can not send log to logging', [
-                'message' => $e->getMessage(),
-                'trace' => $e->getTraceAsString(),
-            ]);
+            if (! is_null(config('laravel-request-tracker.log_channel'))) {
+                Log::channel(config('laravel-request-tracker.log_channel'))->error('can not send log to logging', [
+                    'message' => $exception->getMessage(),
+                    'file' => $exception->getFile(),
+                    'line' => $exception->getLine(),
+                    'trace' => $exception->getTraceAsString(),
+                ]);
+            }
         }
     }
 
