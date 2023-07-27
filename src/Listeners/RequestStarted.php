@@ -52,7 +52,7 @@ class RequestStarted
                 ],
             ]);
         } catch (Exception $exception) {
-            if (!is_null(config('laravel-request-tracker.log_channel'))) {
+            if (! is_null(config('laravel-request-tracker.log_channel'))) {
                 Log::channel(config('laravel-request-tracker.log_channel'))->error('can not send log to logging', [
                     'message' => $exception->getMessage(),
                     'file' => $exception->getFile(),
