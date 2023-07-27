@@ -36,4 +36,6 @@ return [
      * The Identification name with merged with request data to be identified with the logging service in response
      * */
     'identification_response_name' => env('LARAVEL_REQUEST_TRACKER_IDENTIFICATION_RESPONSE_NAME', 'laravel-request-tracker'),
+
+    'log_channel' => env('LARAVEL_REQUEST_TRACKER_LOG_CHANNEL'),
 ];
