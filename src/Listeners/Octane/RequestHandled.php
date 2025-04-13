@@ -70,6 +70,7 @@ class RequestHandled
                 'response_header' => $this->event->response->headers->all(),
                 'status' => $this->event->response->getStatusCode(),
                 'content_type' => $this->event->response->headers->get('content-type'),
+                'user_id' => $this->event->request->user()->uuid ?? null,
             ],
         ];
     }
